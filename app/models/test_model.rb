@@ -1,6 +1,7 @@
 require 'elasticsearch/model'
 
 class TestModel < ApplicationRecord
+  # automaticamente indexa a elasticsearch al crear una instancia de TestModel 
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 

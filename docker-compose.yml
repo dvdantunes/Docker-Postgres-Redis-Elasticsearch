@@ -1,7 +1,7 @@
 version: '2'
 services:
   elasticsearch:
-    image: elasticsearch
+    image: elasticsearch:2.4.4
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -22,13 +22,7 @@ services:
   web:
     build: .
     command: bin/docker-start
-    environment:
-      - ELASTICSEARCH_HOST=elasticsearch
-      - POSTGRESQL_HOST=postgres
-      - POSTGRESQL_PASSWORD=
-      - POSTGRESQL_USERNAME=postgres
-      - REDIS_HOST=redis
-      - DEVISE_ADMIN_EMAIL=admin@example.com
+    env_file: .env
     volumes:
       - .:/rails
     ports:
